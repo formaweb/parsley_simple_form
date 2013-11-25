@@ -25,6 +25,7 @@ Dir["#{File.dirname(__FILE__)}/support/*.rb"].each{|f| require(f)}
 
 class ActionView::TestCase
   include ParsleySimpleForm::SimpleFormExtensions::FormHelper
+  include MiscHelper
 
   setup :setup_company
   setup :setup_controller
