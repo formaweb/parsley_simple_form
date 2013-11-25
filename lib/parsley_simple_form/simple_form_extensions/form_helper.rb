@@ -3,7 +3,6 @@ module ParsleySimpleForm
 
     module FormHelper
       include SimpleForm::ActionViewExtensions::FormHelper
-      ActionView::Helpers::TagHelper::BOOLEAN_ATTRIBUTES << "parsley-validate"
 
       def parsley_simple_for(resource, *args, &block)
         options = args.extract_options!
