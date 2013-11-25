@@ -1,4 +1,5 @@
 require 'simple_form'
+require 'action_view'
 
 require 'parsley_simple_form/version'
 require 'parsley_simple_form/simple_form_extensions/form_helper'
