@@ -15,7 +15,7 @@ module ParsleySimpleForm
       object_class.validators_on(attribute_name).each_with_object({}) do |validate, attributes|
         next unless klass = validate_constantize(validate.kind)
 
-        attributes.merge!(klass.new(validate).attribute_validate)
+        attributes.merge! klass.new(object, validate, attribute_name).attribute_validate
       end
     end
 
