@@ -3,7 +3,7 @@ class Company
 
   attr_accessor :name, :address, :number
 
-  validates :name, :address, :number, presence: true
+  validates :name, :address, :number, presence: {message: "cannot be blank!"}
   validates :name, :address, length: { maximum: 100 }
   validates :number, numericality: true
 

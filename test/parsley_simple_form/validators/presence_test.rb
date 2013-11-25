@@ -7,5 +7,6 @@ class SimpleFormAdaptTest < ActionView::TestCase
     end
 
     assert_select 'input[parsley-required]'
+    assert_select 'input[parsley-required-message="cannot be blank!"]'
   end
 end
