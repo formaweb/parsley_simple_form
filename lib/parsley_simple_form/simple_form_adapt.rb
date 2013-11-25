@@ -12,7 +12,7 @@ module ParsleySimpleForm
     private
 
     def validations_for(attribute_name)
-      object._validators[attribute_name].each_with_object({}) do |validate, attributes|
+      object_class.validators_on(attribute_name).each_with_object({}) do |validate, attributes|
         next unless klass = validate_constantize(validate.kind)
 
         attributes.merge!(klass.new(validate).attribute_validate)
@@ -21,6 +21,10 @@ module ParsleySimpleForm
 
     def validate_constantize(validate_kind)
       ('parsley_simple_form/validators/' + validate_kind.to_s).camelize.constantize rescue false
+    end
+
+    def object_class
+      object.class
     end
   end
 end
