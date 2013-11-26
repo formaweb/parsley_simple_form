@@ -18,6 +18,8 @@ And then execute:
 
 ## Usage
 
+Following instructions to add Parsley JS, here: https://github.com/mekishizufu/parsley-rails
+
 Validate your model as:
 
 ```Ruby
