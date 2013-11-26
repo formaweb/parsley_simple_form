@@ -1,6 +1,10 @@
+# Provide a custom class of SimpleForm
 module ParsleySimpleForm
   class SimpleFormAdapt < SimpleForm::FormBuilder
+    map_type :presence_validation, to: ParsleySimpleForm::Validators::Presence
+    map_type :length_validation, to: ParsleySimpleForm::Validators::Length
 
+    # Add parsley attributes validation
     def input(attribute_name, options = {}, &block)
       options[:input_html] ||= {}
       parsley_validations = validations_for(attribute_name)
@@ -19,8 +23,18 @@ module ParsleySimpleForm
       end
     end
 
+    # This method will search get custom method, whether don't find get validation from ParsleySimpleForm
     def validate_constantize(validate_kind)
-      ('parsley_simple_form/validators/' + validate_kind.to_s).camelize.constantize rescue false
+      get_custom_validation(validate_kind) || mappings["#{validate_kind}_validation".to_sym] || false
+    end
+
+    def get_custom_validation(klass)
+      camelized = klass.to_s.camelize
+      begin
+        Object.const_get(camelized)
+      rescue
+        false
+      end
     end
 
     def object_class
