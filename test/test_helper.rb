@@ -47,6 +47,6 @@ class ActionView::TestCase
   end
 
   def url_for(*)
-    "http://exemplo.com"
+    "http://example.com"
   end
 end
