@@ -1,4 +1,4 @@
-Copyright (c) 2013 Matheus Caceres
+Copyright (c) 2013 Formaweb
 
 MIT License
 
