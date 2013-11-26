@@ -18,6 +18,8 @@ module ParsleySimpleForm
     ParsleySimpleForm::Validators.eager_load!
   end
 
+  # Configuration to add more boolean attributes
+  mattr_acessor :parsley_attributes
   @@parsley_attributes = [
     "parsley-validate",
     "parsley-required",
