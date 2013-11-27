@@ -12,14 +12,14 @@ module ParsleySimpleForm
         @attribute_name = attribute_name
       end
 
-      def message_error(options_message={})
-        generate_message(options_message)
+      def message_error(options_message={}, other_value_validate=nil)
+        generate_message(options_message, other_value_validate)
       end
 
       protected
 
-      def generate_message(options_message)
-        error.generate_message(attribute_name, validate.kind, options.merge(options_message))
+      def generate_message(options_message, other_value_validate=nil)
+        error.generate_message(attribute_name, other_value_validate || validate.kind, options.merge(options_message))
       end
     end
 
