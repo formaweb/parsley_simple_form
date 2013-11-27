@@ -3,6 +3,7 @@ module ParsleySimpleForm
   class SimpleFormAdapt < SimpleForm::FormBuilder
     map_type :presence_validation, to: ParsleySimpleForm::Validators::Presence
     map_type :length_validation, to: ParsleySimpleForm::Validators::Length
+    map_type :numericality_validation, to: ParsleySimpleForm::Validators::Numericality
 
     # Add parsley attributes validation
     def input(attribute_name, options = {}, &block)
