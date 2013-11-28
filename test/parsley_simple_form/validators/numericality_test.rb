@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SimpleFormAdaptTest < ActionView::TestCase
+class NumericallityTest < ActionView::TestCase
   test "add attribute number when numericality were set." do
     parsley_concat_form(@company) do |f|
       f.input :number

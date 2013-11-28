@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SimpleFormAdaptTest < ActionView::TestCase
+class LengthTest < ActionView::TestCase
   test "add attribute minlength or maxlength when validates length defined" do
     parsley_concat_form(@company) do |f|
       f.input :address
