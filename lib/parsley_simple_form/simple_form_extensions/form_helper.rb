@@ -13,3 +13,5 @@ module ParsleySimpleForm
 
   end
 end
+
+ActionView::Base.send :include, ParsleySimpleForm::SimpleFormExtensions::FormHelper
