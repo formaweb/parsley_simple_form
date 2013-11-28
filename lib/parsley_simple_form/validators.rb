@@ -6,5 +6,6 @@ module ParsleySimpleForm
     autoload :Presence
     autoload :Length
     autoload :Numericality
+    autoload :Inclusion
   end
 end
