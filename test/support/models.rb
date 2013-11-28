@@ -20,6 +20,7 @@ class Company
       when :name then :string
       when :address then :string
       when :number then :integer
+      when :number_only_integer then :integer
       when :phone_kind then :string
     end
     Column.new(column)
