@@ -4,4 +4,3 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'railties', '>= 4.0.0', '< 4.1'
-gem 'parsley-rails', github: 'matheusca/parsley-rails'
