@@ -3,10 +3,19 @@ Column = Struct.new(:type, :limit) do
     type == (:integer || :float || :decimal)
   end
 end
+
+class EmailValidator < ActiveModel::EachValidator
+  def validate_each(record, attribute, value)
+    unless value =~ /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
+      record.errors[attribute] << (options[:message] || "is not an email")
+    end
+  end
+end
+
 class Company
   include ActiveModel::Model
 
-  attr_accessor :name, :address, :number, :number_only_integer, :phone_kind
+  attr_accessor :name, :address, :number, :number_only_integer, :phone_kind, :email
 
   validates :name, :address, :number, presence: {message: "cannot be blank!"}
   validates :name, length: {in: 6..20}
@@ -14,6 +23,7 @@ class Company
   validates :number, numericality: {greater_than_or_equal_to: 6, less_than_or_equal_to: 100, message: "is an invalid number."}
   validates :number_only_integer, numericality: {only_integer: true, message: "is an invalid number."}
   validates :phone_kind, inclusion: {in: %w(phone cell-phone), message: "is not included in the list"}
+  validates :email, email: true
 
   def column_for_attribute(attribute_name)
     column = case attribute_name.to_sym
@@ -22,6 +32,7 @@ class Company
       when :number then :integer
       when :number_only_integer then :integer
       when :phone_kind then :string
+      when :email then :string
     end
     Column.new(column)
   end
