@@ -18,7 +18,10 @@ And then execute:
 
 ## Usage
 
+### Basic
+
 Following instructions to add Parsley JS, here: https://github.com/mekishizufu/parsley-rails
+**Note:** If you need `inlist` validation , please put `parsley.extend` as well.
 
 Validate your model as:
 
@@ -39,6 +42,26 @@ end
 ```
 
 Just it! Parsley attributes will put in your inputs automagic!
+
+### Custom validation
+
+Maybe you have custom validation, so you'd need create a custom validation for Parsley as well.
+For instance, you have an e-mail validation, then you need create for ParsleySimpleForm.
+
+Note, you may have to create the `app/validators/` directory and restart your webserver.
+
+```Ruby
+# app/validators/email.rb
+module Validators
+  class Email < ParsleySimpleForm::Validators::Base
+
+    def attribute_validate
+      {:"parsley-type" => 'email', :"parsley-type-email-message" => 'is not an email.'}
+    end
+
+  end
+end
+```
 
 ## Dependencies
 
