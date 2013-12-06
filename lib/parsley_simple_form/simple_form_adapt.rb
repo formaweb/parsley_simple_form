@@ -31,7 +31,7 @@ module ParsleySimpleForm
     end
 
     def get_custom_validation(klass)
-      camelized = klass.to_s.camelize
+      camelized = ('validators/' + klass.to_s).camelize
       begin
         Object.const_get(camelized)
       rescue
